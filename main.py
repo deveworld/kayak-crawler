@@ -44,11 +44,11 @@ class TravelBot(commands.Bot):
 
     async def crawling(self):
         while True:
-            # await self.sendMessage(f"called LOOP at {time.strftime('%c', time.localtime(time.time()))}")
             (result, price) = await self.spider.check_price()
             if not result:
                 await self.sendMessage(price, 0xff0000)
-                return
+                await asyncio.sleep(60)
+                continue
             await self.sendMessage(price)
             await asyncio.sleep(60)
     
