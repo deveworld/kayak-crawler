@@ -47,10 +47,10 @@ class TravelBot(commands.Bot):
             (result, price) = await self.spider.check_price()
             if not result:
                 await self.sendMessage(price, 0xff0000)
-                await asyncio.sleep(60)
+                await asyncio.sleep(WAIT)
                 continue
             await self.sendMessage(price)
-            await asyncio.sleep(60)
+            await asyncio.sleep(WAIT)
     
     def add_commands(self) -> None:
         @self.command(name="on", pass_context=True)
